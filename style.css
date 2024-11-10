@@ -1,0 +1,119 @@
+@font-face {
+    font-family: 'Space Marine';
+    src: url('fonts/spaceagecyrillicregular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Project_space';
+    src: url('fonts/Project_Space.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('img/background_authorization.svg');
+    background-color: #1C1A30;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.image-container {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 44px;
+}
+
+.auth-container {
+
+    padding: 30px;
+    width: 380px;
+    max-width: 100%;
+}
+
+h2 {
+    text-align: center;
+    font-size: 40px;
+    color: #F8CC1B;
+    margin-bottom: 40px;
+    margin-top: 30px;
+    font-family: 'Space Marine', sans-serif;
+ 
+
+}
+
+.form-group {
+    margin-bottom: 15px;
+ 
+    margin-top: 20px;
+}
+
+.form-group label {
+    font-size: 18px;
+    color: #F8CC1B;
+    font-family: 'Space Marine', sans-serif;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.form-group input {
+    width: 100%;
+    height: 45px;
+    background-color: #455A64;
+    padding: 10px;
+    font-size: 14px;
+    border: 2px solid #4857AE;
+    border-radius: 7px;
+    box-sizing: border-box;
+}
+
+.form-group input:focus {
+    border-color: #4A90E2;
+    outline: none;
+}
+
+/*.form-group .forgot-password {
+    font-size: 12px;
+    color: #4A90E2;
+    text-align: right;
+    display: block;
+    margin-top: 5px;
+}*/
+
+.auth-button {
+    width: 100%;
+    height: 55px;
+    padding: 12px;
+    font-size: 18px;
+    color: #241601;
+    font-family: 'Space Marine', sans-serif;
+    background-color: #F8CC1B;
+    border: none;
+    margin-top: 15px;
+    border-radius: 9px;
+    cursor: pointer;
+}
+
+.auth-button:hover {
+    background-color: #cda400;
+}
+
+.auth-footer {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 10px;
+    font-family: 'Project_space', sans-serif;
+}
+
+.auth-footer a {
+    color: #4792e7;
+    text-decoration: none;
+}
+
