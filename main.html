@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страницы</title>
+    <style>
+        @font-face {
+            font-family: 'Project_space';
+            src: url('fonts/Project_Space.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Space Marine';
+            src: url('fonts/spaceagecyrillicregular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            margin: 0;
+            background-color: #1C1A30;
+            background-image: url('img/Main2.svg');
+
+        }
+
+        .title-main {
+            text-align: center;
+            font-size: 40px;
+            color: #F8CC1B;
+            margin-bottom: 40px;
+            margin-top: 50px;
+            font-family: 'Space Marine', sans-serif;
+
+        }
+
+        
+
+        .planet-sun {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: auto;
+            margin-top: 300px;
+            margin-left: 450px;
+        }
+
+        .planet-mercury {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 100px;
+            margin-right: 450px;
+            
+        }
+        .planet-venus {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: 450px;
+            padding-top: 150px;
+            
+        }
+        .planet-earth{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 450px;
+            padding-top: 90px;
+        
+        }
+        .planet-mars{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: 450px;
+            padding-top: 110px;
+        }
+        .planet-jupiter{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 660px;
+            padding-top: 50px;
+        }
+        .planet-saturn{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: 450px;
+            padding-top: 50px;
+        }
+        .planet-uranium{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 150px;
+            padding-top: 300px;
+        }
+        .planet-neptune{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 680px;
+            padding-top: 300px;
+        }
+        svg {
+            max-width: 150px;
+            max-height: 150px;
+        }
+        button{
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+    
+        }
+    </style>
+</head>
+
+<body>
+    <div class="solar-system">
+        <h1 class="title-main">Твой путь Frontend-разработчика </h1>
+        <div class="planet-sun">
+            <button ><img id="Sun" src="img/Sun.svg" width="800" height="880"></button>
+        </div>
+      
+        <div class="planet-mercury">
+            <button ><img id="Mercury" src="img/Mercury.svg" width="133" height="133"></button>
+        </div>
+        <div class="planet-venus">
+            <button ><img id="Venus" src="img/Venus.svg" width="204" height="204"></button>
+        </div>
+        <div class="planet-earth">
+            <button ><img id="Earth" src="img/Earth.svg" width="220" height="220"></button>
+        </div>
+        <div class="planet-mars">
+            <button ><img id="Mars" src="img/Mars.svg" width="200" height="200"></button>
+        </div>
+        <div class="planet-jupiter">
+            <button ><img id="Jupiter" src="img/Jupiter.svg" width="353" height="353"></button>
+        </div>
+        <div class="planet-saturn">
+            <button ><img id="Saturn" src="img/Saturn.svg" width="400" height="390"></button>
+        </div>
+        <div class="planet-uranium">
+            <button ><img id="Uranium" src="img/Uranium.svg" width="200" height="200"></button>
+        </div>
+        <div class="planet-neptune">
+            <button ><img id="Neptune" src="img/Neptune.svg" width="150" height="150"></button>
+        </div>
+    </div>
+</body>
+
+</html>
