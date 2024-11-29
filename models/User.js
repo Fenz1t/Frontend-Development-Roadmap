@@ -1,5 +1,11 @@
 import mongoose from "mongoose";
 
+const progressSchema = new mongoose.Schema({
+  planetId: { type: mongoose.Schema.Types.ObjectId, ref: "Planet" }, // ID планеты
+  asteroidId: { type: mongoose.Schema.Types.ObjectId }, // ID астероида
+  isCompleted: { type: Boolean, default: false }, // Статус выполнения
+});
+
 const userSchema = new mongoose.Schema(
   {
     fullName: {
@@ -16,6 +22,7 @@ const userSchema = new mongoose.Schema(
       required: true,
     },
     avatarUrl: String,
+    progress: [progressSchema], 
   },
   {
     timestamps: true,
