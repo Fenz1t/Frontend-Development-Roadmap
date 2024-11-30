@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страницы</title>
+    <style>
+        @font-face {
+            font-family: 'Project_space';
+            src: url('fonts/Project_Space.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Space Marine';
+            src: url('fonts/spaceagecyrillicregular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            margin: 0;
+            background-color: #1C1A30;
+            background-image: url('img/Main2.svg');
+
+        }
+
+        .title-main {
+            text-align: center;
+            font-size: 40px;
+            color: #F8CC1B;
+            margin-bottom: 40px;
+            margin-top: 50px;
+            font-family: 'Space Marine', sans-serif;
+
+        }
+
+
+
+        .planet-sun {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: auto;
+            margin-top: 300px;
+            margin-left: 450px;
+        }
+
+        .planet-mercury {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 100px;
+            margin-right: 450px;
+
+        }
+
+        .planet-venus {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: 450px;
+            padding-top: 150px;
+
+        }
+
+        .planet-earth {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 450px;
+            padding-top: 90px;
+
+        }
+
+        .planet-mars {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: 450px;
+            padding-top: 110px;
+        }
+
+        .planet-jupiter {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 660px;
+            padding-top: 50px;
+        }
+
+        .planet-saturn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: 450px;
+            padding-top: 50px;
+        }
+
+        .planet-uranium {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 150px;
+            padding-top: 300px;
+        }
+
+        .planet-neptune {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 680px;
+            padding-top: 300px;
+        }
+
+        svg {
+            max-width: 150px;
+            max-height: 150px;
+        }
+
+        button {
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+
+        }
+
+        .open-modal-btn {
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+        }
+
+        /* Модальное окно */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            color: #000;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: left;
+            width: 80%;
+            max-width: 800px;
+            height: 80%;
+            max-height: 600px;
+            overflow: auto;
+            position: relative;
+            /* Чтобы позиционировать кнопку внутри модального окна */
+
+
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            max-height: 70%;
+            margin-bottom: 20px;
+        }
+
+        .modal-content h2 {
+            font-size: 30px;
+            margin: 0 0 10px;
+        }
+
+        .close-modal {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #F8CC1B;
+            color: #1C1A30;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+
+        }
+
+        .close-modal:hover {
+            background-color: #d8b014;
+
+        }
+
+
+        #Sun-modal {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            /* Солнце поверх метеоритов */
+        }
+
+        .Mercury-modal {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            /* Солнце поверх метеоритов */
+
+        }
+
+        /* Стили для кнопок */
+        .meteor-button {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            z-index: 0;
+        }
+
+
+        .meteor-button:nth-child(2) {
+
+            top: 25%;
+            right: 15%;
+            transform: translate(-50%, -50%);
+
+        }
+
+        .meteor-button:nth-child(3) {
+
+            top: 55%;
+            right: 10%;
+            transform: translate(-50%, -50%);
+        }
+
+        .meteor-button:nth-child(4) {
+
+            bottom: 15%;
+            right: 20%;
+            transform: translate(-50%, 50%);
+        }
+
+        .meteor-button:nth-child(5) {
+
+            bottom: 0%;
+            left: 30%;
+            transform: translate(-50%, -50%);
+        }
+
+        .meteor-button:nth-child(6) {
+
+            bottom: 50%;
+            left: 20%;
+            transform: translate(-50%, 50%);
+        }
+
+        .done-progress {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #b0afac;
+            color: #1C1A30;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            position: absolute;
+            top: 80px;
+            left: 40px;
+        }
+
+        .done-progress.completed {
+            background-color: #4CAF50;
+            /* зелёный */
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="solar-system">
+        <h1 class="title-main">Твой путь Frontend-разработчика </h1>
+        <div class="planet-sun">
+            <button class="open-modal-btn" id="btn-sun"><img id="Sun" src="img/Sun.svg" width="800"
+                    height="880"></button>
+
+            <div class="modal" id="modal-sun">
+                <div class="modal-content">
+                    <h2>Тема 0. Основы веб-разработки </h2>
+                    <div class="sun-with-meteors">
+                        <img id="Sun-modal" src="img/Sun.svg" width="550" height="480">
+                        <button class="meteor-button" data-meteor="1"><img class="meteor" src="img/Meteor_first.svg"
+                                alt="Meteor 1"></button>
+                        <button class="meteor-button" data-meteor="2"><img class="meteor"
+                                src="img/Meteor_second_block.svg" alt="Meteor 2"></button>
+                        <button class="meteor-button" data-meteor="3"><img class="meteor"
+                                src="img/Meteor_third_block.svg" alt="Meteor 3"></button>
+                        <button class="meteor-button" data-meteor="4"><img class="meteor"
+                                src="img/Meteor_fourth_block.svg" alt="Meteor 4"></button>
+                        <button class="meteor-button" data-meteor="5"><img class="meteor"
+                                src="img/Meteor_fifth_block.svg" alt="Meteor 5"></button>
+                    </div>
+                    <button class="close-modal">Закрыть</button>
+                    <button class="done-progress">Отметить как выполненный</button>
+                </div>
+            </div>
+        </div>
+        <div class="planet-mercury">
+            <button class="open-modal-btn" id="btn-mercury"><img id="Mercury" src="img/Mercury_block.svg" width="133"
+                    height="133"></button>
+            <div class="modal" id="modal-mercury">
+                <div class="modal-content">
+                    <h2>Тема 1. Основы JavaScript</h2>
+                    <div class="sun-with-meteors">
+                        <img id="Sun-modal" src="img/Mercury.svg" width="200" height="200">
+                        <button class="meteor-button" data-meteor="1"><img class="meteor" src="img/Meteor_first.svg"
+                                alt="Meteor 1"></button>
+                        <button class="meteor-button" data-meteor="2"><img class="meteor"
+                                src="img/Meteor_second_block.svg" alt="Meteor 2"></button>
+                        <button class="meteor-button" data-meteor="3"><img class="meteor"
+                                src="img/Meteor_third_block.svg" alt="Meteor 3"></button>
+                        <button class="meteor-button" data-meteor="4"><img class="meteor"
+                                src="img/Meteor_fourth_block.svg" alt="Meteor 4"></button>
+                        <button class="meteor-button" data-meteor="5"><img class="meteor"
+                                src="img/Meteor_fifth_block.svg" alt="Meteor 5"></button>
+                    </div>
+                    <button class="close-modal">Закрыть</button>
+                    <button class="done-progress">Отметить как выполненный</button>
+                </div>
+            </div>
+        </div>
+        <div class="planet-venus">
+            <button class="open-modal-btn" id="btn-venus"><img id="Venus" src="img/Venus_block.svg" width="204"
+                    height="204"></button>
+            <div class="modal" id="modal-venus">
+                <div class="modal-content">
+                    <h2>Тема 2. Асинхронность в JavaScript</h2>
+                    <div class="sun-with-meteors">
+                        <img id="Sun-modal" src="img/Venus.svg" width="200" height="200">
+                        <button class="meteor-button" data-meteor="1"><img class="meteor" src="img/Meteor_first.svg"
+                                alt="Meteor 1"></button>
+                        <button class="meteor-button" data-meteor="2"><img class="meteor"
+                                src="img/Meteor_second_block.svg" alt="Meteor 2"></button>
+                        <button class="meteor-button" data-meteor="3"><img class="meteor"
+                                src="img/Meteor_third_block.svg" alt="Meteor 3"></button>
+                        <button class="meteor-button" data-meteor="4"><img class="meteor"
+                                src="img/Meteor_fourth_block.svg" alt="Meteor 4"></button>
+                        <button class="meteor-button" data-meteor="5"><img class="meteor"
+                                src="img/Meteor_fifth_block.svg" alt="Meteor 5"></button>
+                    </div>
+                    <button class="close-modal">Закрыть</button>
+                    <button class="done-progress">Отметить как выполненный</button>
+                </div>
+            </div>
+        </div>
+        <div class="planet-earth">
+            <button class="open-modal-btn" id="btn-earth"><img id="Earth" src="img/Earth_block.svg" width="204"
+                    height="204"></button>
+            <div class="modal" id="modal-earth">
+                <div class="modal-content">
+                    <h2>Тема 3. Git и GitHub</h2>
+                    <div class="sun-with-meteors">
+                        <img id="Sun-modal" src="img/Earth.svg" width="200" height="200">
+                        <button class="meteor-button" data-meteor="1"><img class="meteor" src="img/Meteor_first.svg"
+                                alt="Meteor 1"></button>
+                        <button class="meteor-button" data-meteor="2"><img class="meteor"
+                                src="img/Meteor_second_block.svg" alt="Meteor 2"></button>
+                        <button class="meteor-button" data-meteor="3"><img class="meteor"
+                                src="img/Meteor_third_block.svg" alt="Meteor 3"></button>
+                        <button class="meteor-button" data-meteor="4"><img class="meteor"
+                                src="img/Meteor_fourth_block.svg" alt="Meteor 4"></button>
+                        <button class="meteor-button" data-meteor="5"><img class="meteor"
+                                src="img/Meteor_fifth_block.svg" alt="Meteor 5"></button>
+                    </div>
+                    <button class="close-modal">Закрыть</button>
+                    <button class="done-progress">Отметить как выполненный</button>
+                </div>
+            </div>
+        </div>
+        <div class="planet-mars">
+            <button class="open-modal-btn" id="btn-mars"><img id="Earth" src="img/Mars_block.svg" width="204"
+                    height="204"></button>
+            <div class="modal" id="modal-mars">
+                <div class="modal-content">
+                    <h2>Тема 4. Инструменты для разработки</h2>
+                    <div class="sun-with-meteors">
+                        <img id="Sun-modal" src="img/Mars.svg" width="200" height="200">
+                        <button class="meteor-button" data-meteor="1"><img class="meteor" src="img/Meteor_first.svg"
+                                alt="Meteor 1"></button>
+                        <button class="meteor-button" data-meteor="2"><img class="meteor"
+                                src="img/Meteor_second_block.svg" alt="Meteor 2"></button>
+                        <button class="meteor-button" data-meteor="3"><img class="meteor"
+                                src="img/Meteor_third_block.svg" alt="Meteor 3"></button>
+                        <button class="meteor-button" data-meteor="4"><img class="meteor"
+                                src="img/Meteor_fourth_block.svg" alt="Meteor 4"></button>
+                        <button class="meteor-button" data-meteor="5"><img class="meteor"
+                                src="img/Meteor_fifth_block.svg" alt="Meteor 5"></button>
+                    </div>
+                    <button class="close-modal">Закрыть</button>
+                    <button class="done-progress">Отметить как выполненный</button>
+                </div>
+            </div>
+        </div>
+        <div class="planet-jupiter">
+            <button class="open-modal-btn" id="btn-jupiter"><img id="Jupiter" src="img/Jupiter_block.svg" width="353"
+                    height="353"></button>
+            <div class="modal" id="modal-jupiter">
+                <div class="modal-content">
+                    <h2>Тема 5. Фреймворки и библиотеки</h2>
+                    <div class="sun-with-meteors">
+                        <img id="Sun-modal" src="img/Jupiter.svg" width="200" height="200">
+                        <button class="meteor-button" data-meteor="1"><img class="meteor" src="img/Meteor_first.svg"
+                                alt="Meteor 1"></button>
+                        <button class="meteor-button" data-meteor="2"><img class="meteor"
+                                src="img/Meteor_second_block.svg" alt="Meteor 2"></button>
+                        <button class="meteor-button" data-meteor="3"><img class="meteor"
+                                src="img/Meteor_third_block.svg" alt="Meteor 3"></button>
+                        <button class="meteor-button" data-meteor="4"><img class="meteor"
+                                src="img/Meteor_fourth_block.svg" alt="Meteor 4"></button>
+                        <button class="meteor-button" data-meteor="5"><img class="meteor"
+                                src="img/Meteor_fifth_block.svg" alt="Meteor 5"></button>
+                    </div>
+                    <button class="close-modal">Закрыть</button>
+                    <button class="done-progress">Отметить как выполненный</button>
+                </div>
+            </div>
+        </div>
+        <div class="planet-saturn">
+            <button class="open-modal-btn" id="btn-saturn"><img id="Saturn" src="img/Saturn_block.svg" width="400"
+                    height="390"></button>
+            <div class="modal" id="modal-saturn">
+                <div class="modal-content">
+                    <h2>Тема 6. Принципы и паттерны разработки</h2>
+                    <div class="sun-with-meteors">
+                        <img id="Sun-modal" src="img/Saturn.svg" width="200" height="200">
+                        <button class="meteor-button" data-meteor="1"><img class="meteor" src="img/Meteor_first.svg"
+                                alt="Meteor 1"></button>
+                        <button class="meteor-button" data-meteor="2"><img class="meteor"
+                                src="img/Meteor_second_block.svg" alt="Meteor 2"></button>
+                        <button class="meteor-button" data-meteor="3"><img class="meteor"
+                                src="img/Meteor_third_block.svg" alt="Meteor 3"></button>
+                        <button class="meteor-button" data-meteor="4"><img class="meteor"
+                                src="img/Meteor_fourth_block.svg" alt="Meteor 4"></button>
+                        <button class="meteor-button" data-meteor="5"><img class="meteor"
+                                src="img/Meteor_fifth_block.svg" alt="Meteor 5"></button>
+                    </div>
+                    <button class="close-modal">Закрыть</button>
+                    <button class="done-progress">Отметить как выполненный</button>
+                </div>
+            </div>
+        </div>
+        <div class="planet-uranium">
+            <button class="open-modal-btn" id="btn-uranium"><img id="Uranium" src="img/Uranium_block.svg" width="200"
+                    height="200"></button>
+            <div class="modal" id="modal-uranium">
+                <div class="modal-content">
+                    <h2>Тема 7. Принципы и паттерны разработки</h2>
+                    <div class="sun-with-meteors">
+                        <img id="Sun-modal" src="img/Uranium.svg" width="200" height="200">
+                        <button class="meteor-button" data-meteor="1"><img class="meteor" src="img/Meteor_first.svg"
+                                alt="Meteor 1"></button>
+                        <button class="meteor-button" data-meteor="2"><img class="meteor"
+                                src="img/Meteor_second_block.svg" alt="Meteor 2"></button>
+                        <button class="meteor-button" data-meteor="3"><img class="meteor"
+                                src="img/Meteor_third_block.svg" alt="Meteor 3"></button>
+                        <button class="meteor-button" data-meteor="4"><img class="meteor"
+                                src="img/Meteor_fourth_block.svg" alt="Meteor 4"></button>
+                        <button class="meteor-button" data-meteor="5"><img class="meteor"
+                                src="img/Meteor_fifth_block.svg" alt="Meteor 5"></button>
+                    </div>
+                    <button class="close-modal">Закрыть</button>
+                    <button class="done-progress">Отметить как выполненный</button>
+                </div>
+            </div>
+        </div>
+        <div class="planet-neptune">
+            <button class="open-modal-btn" id="btn-neptune"><img id="Neptune" src="img/Neptune_block.svg" width="150"
+                    height="150"></button>
+            <div class="modal" id="modal-neptune">
+                <div class="modal-content">
+                    <h2>Тема 8. Тестирование и деплой</h2>
+                    <div class="sun-with-meteors">
+                        <img id="Sun-modal" src="img/Neptune.svg" width="200" height="200">
+                        <button class="meteor-button" data-meteor="1"><img class="meteor" src="img/Meteor_first.svg"
+                                alt="Meteor 1"></button>
+                        <button class="meteor-button" data-meteor="2"><img class="meteor"
+                                src="img/Meteor_second_block.svg" alt="Meteor 2"></button>
+                        <button class="meteor-button" data-meteor="3"><img class="meteor"
+                                src="img/Meteor_third_block.svg" alt="Meteor 3"></button>
+                        <button class="meteor-button" data-meteor="4"><img class="meteor"
+                                src="img/Meteor_fourth_block.svg" alt="Meteor 4"></button>
+                        <button class="meteor-button" data-meteor="5"><img class="meteor"
+                                src="img/Meteor_fifth_block.svg" alt="Meteor 5"></button>
+                    </div>
+                    <button class="close-modal">Закрыть</button>
+                    <button class="done-progress">Отметить как выполненный</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="modal1">
+            <div class="modal-content">
+                <h2>Метеорит 1</h2>
+                <img src="img/Meteor_first.svg" alt="Meteor 1">
+                <button class="close-modal">Закрыть</button>
+            </div>
+        </div>
+
+        <div class="modal" id="modal2">
+            <div class="modal-content">
+                <h2>Метеорит 2</h2>
+                <img src="img/Meteor_second_block.svg" alt="Meteor 2">
+                <button class="close-modal">Закрыть</button>
+            </div>
+        </div>
+
+        <div class="modal" id="modal3">
+            <div class="modal-content">
+                <h2>Метеорит 3</h2>
+                <img src="img/Meteor_third_block.svg" alt="Meteor 3">
+                <button class="close-modal">Закрыть</button>
+            </div>
+        </div>
+
+        <div class="modal" id="modal4">
+            <div class="modal-content">
+                <h2>Метеорит 4</h2>
+                <img src="img/Meteor_fourth_block.svg" alt="Meteor 4">
+                <button class="close-modal">Закрыть</button>
+            </div>
+        </div>
+
+        <div class="modal" id="modal5">
+            <div class="modal-content">
+                <h2>Метеорит 5</h2>
+                <img src="img/Meteor_fifth_block.svg" alt="Meteor 5">
+                <button class="close-modal">Закрыть</button>
+            </div>
+        </div>
+        <script>
+            // Открытие и закрытие модальных окон для Солнца, Меркурия и Венеры
+            document.addEventListener('DOMContentLoaded', () => {
+
+                // Открытие модальных окон
+                const openModalBtns = document.querySelectorAll('.open-modal-btn');
+                const modals = document.querySelectorAll('.modal');
+                const closeModalBtns = document.querySelectorAll('.close-modal');
+
+                // Обработчик для открытия модальных окон
+                openModalBtns.forEach(button => {
+                    button.addEventListener('click', () => {
+                        // Получаем id модального окна для соответствующей кнопки
+                        const modalId = `modal-${button.id.split('-')[1]}`;
+                        document.getElementById(modalId).style.display = 'flex'; // Открытие модального окна
+                    });
+                });
+
+                // Закрытие модальных окон при клике на кнопку "Закрыть"
+                closeModalBtns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        // Закрытие всех модальных окон
+                        modals.forEach(modal => {
+                            modal.style.display = 'none';
+                        });
+                    });
+                });
+
+                // Закрытие модальных окон при клике на фон
+                modals.forEach(modal => {
+                    modal.addEventListener('click', (event) => {
+                        // Закрытие модального окна при клике на фон (если кликнут на фон, а не на контент)
+                        if (event.target === modal) {
+                            modal.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+
+
+            const doneButtons = document.querySelectorAll('.done-progress');
+            doneButtons.forEach(doneButton => {
+                doneButton.addEventListener('click', () => {
+                    doneButton.classList.toggle('completed'); // Переключаем класс, который меняет цвет
+                    if (doneButton.classList.contains('completed')) {
+                        doneButton.textContent = 'Задача выполнена'; // Меняем текст на кнопке, если задача выполнена
+                    } else {
+                        doneButton.textContent = 'Отметить как выполненный'; // Возвращаем исходный текст
+                    }
+                });
+            });
+
+        </script>
+</body>
+
+
+</html>
